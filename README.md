@@ -9,7 +9,7 @@
 
 ## Installation
 
-[git clone](https://pip.pypa.io/en/stable/) to install fbbruteforce.
+[git clone] https://github.com/FonderElite/FB-BruteForce to install fbbruteforce.
 
 ```bash
 pip install requirements.txt
