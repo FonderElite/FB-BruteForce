@@ -1,0 +1,8 @@
+ sys
+ random
+ requests
+ colorama
+platform
+mechanize
+ re
+ os
