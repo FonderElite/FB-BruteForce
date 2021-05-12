@@ -1,13 +1,5 @@
-import sys
-import random
-import requests
-import time
-import colorama
+import sys,random,requests,time,colorama,platform,mechanize,re,os
 from colorama import Fore
-import platform
-import mechanize
-import re
-import os
 versionPath = "core"+os.sep+"version.txt"
 wi="\033[1;37m" #>>White#
 rd="\033[1;31m" #>Red   #
